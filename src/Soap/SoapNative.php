@@ -81,9 +81,9 @@ class SoapNative extends SoapBase implements SoapInterface
                 $this->responseHead . "\n" . $this->responseBody
             );
         } catch (SoapFault $e) {
-            throw SoapException::soapFault("[$url] " . $e->getMessage());
+            throw SoapException::soapFault("[$url] " . $e->getMessage(), 1);
         } catch (\Exception $e) {
-            throw SoapException::soapFault("[$url] " . $e->getMessage());
+            throw SoapException::soapFault("[$url] " . $e->getMessage(), 1);
         }
         return $this->responseBody;
     }
@@ -121,9 +121,9 @@ class SoapNative extends SoapBase implements SoapInterface
         try {
             $this->connection = new SoapClientExtended($wsdl, $params);
         } catch (SoapFault $e) {
-            throw SoapException::soapFault($e->getMessage());
+            throw SoapException::soapFault($e->getMessage(), 1);
         } catch (\Exception $e) {
-            throw SoapException::soapFault($e->getMessage());
+            throw SoapException::soapFault($e->getMessage(), 1);
         }
     }
     
